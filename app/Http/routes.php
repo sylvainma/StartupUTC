@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'api'], function() {
+    Route::get('/', function () {
+      return 'Hello World';
+    });
+});
