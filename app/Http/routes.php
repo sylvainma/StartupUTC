@@ -16,7 +16,19 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'api'], function() {
+
     Route::get('/', function () {
       return 'Hello World';
     });
+
+    // Toutes les startups
+    Route::get('/startups', function () {
+      return 'startup';
+    });
+
+    // Tous les fondateurs
+    Route::get('/founders', function () {
+      return 'founder';
+    });
+
 });

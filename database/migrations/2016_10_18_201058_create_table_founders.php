@@ -12,13 +12,16 @@ class CreateTableFounders extends Migration
      */
     public function up()
     {
-        Schema::create('Founders', function($table){
-          $table->integer('individual_id')->unsigned();
-          $table->integer('startup_id')->unsigned();
-          $table->foreign('individual_id')->references('id')->on('Individuals');
-          $table->foreign('startup_id')->references('id')->on('Startups');
-          $table->primary(['individual_id', 'startup_id']);
-        });
+      Schema::create('founders', function($table){
+        $table->increments('id');
+        $table->integer('individual_id')->unsigned();
+        $table->integer('startup_id')->unsigned();
+        $table->timestamps();
+
+        // Clés étrangères
+        $table->foreign('individual_id')->references('id')->on('Individuals');
+        $table->foreign('startup_id')->references('id')->on('Startups');
+      });
     }
 
     /**
@@ -28,6 +31,6 @@ class CreateTableFounders extends Migration
      */
     public function down()
     {
-        Schema::drop('Founders');
+      Schema::drop('founders');
     }
 }

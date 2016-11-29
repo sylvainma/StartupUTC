@@ -12,12 +12,13 @@ class CreateTableIndividuals extends Migration
      */
     public function up()
     {
-        Schema::create('Individuals', function($table){
-          $table->increments('id');
-          $table->string('firstName');
-          $table->string('lastName');
-          $table->string('email');
-        });
+      Schema::create('individuals', function($table){
+        $table->increments('id');
+        $table->string('first_name');
+        $table->string('last_name');
+        $table->string('email');
+        $table->timestamps();
+      });
     }
 
     /**
@@ -27,6 +28,6 @@ class CreateTableIndividuals extends Migration
      */
     public function down()
     {
-        Schema::drop('Individuals');
+      Schema::drop('individuals');
     }
 }
