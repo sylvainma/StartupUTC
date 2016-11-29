@@ -15,16 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'api'], function() {
+Route::group(['prefix' => 'api/v1'], function() {
 
     Route::get('/', function () {
       return 'Hello World';
     });
 
-    // Toutes les startups
-    Route::get('/startups', function () {
-      return 'startup';
-    });
+    // Startups
+    Route::resource('/startups', 'ApiStartupsController');
 
     // Tous les fondateurs
     Route::get('/founders', function () {

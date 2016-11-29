@@ -26,7 +26,7 @@ class Startup extends Model
    */
   public function individuals()
   {
-    return $this->belongsToMany('App\Individual', 'founders');
+    return $this->belongsToMany('App\Individual');
   }
 
 }

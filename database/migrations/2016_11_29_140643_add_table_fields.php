@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableIndividuals extends Migration
+class AddTableFields extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreateTableIndividuals extends Migration
      */
     public function up()
     {
-      Schema::create('individuals', function($table){
+      Schema::create('fields', function($table){
         $table->increments('id');
-        $table->string('first_name');
-        $table->string('last_name');
-        $table->string('email');
+        $table->string('name');
         $table->timestamps();
       });
     }
@@ -28,6 +26,6 @@ class CreateTableIndividuals extends Migration
      */
     public function down()
     {
-      Schema::drop('individuals');
+      Schema::drop('fields');
     }
 }

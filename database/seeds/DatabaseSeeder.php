@@ -20,9 +20,8 @@ class DatabaseSeeder extends Seeder
       $s = new Startup(['name' => 'Metashot']);
       $s->save();
 
-      $f = new Founder();
-      $f->individual()->associate($i);
-      $f->startup()->associate($s);
-      $f->save();
+      $i->startups()->attach($s->id);
+      // marche aussi: $s->individuals()->attach($i->id);
+
     }
 }
