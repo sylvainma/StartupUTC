@@ -11,14 +11,24 @@
 |
 */
 
+/**
+ *  Web App
+ *
+ */
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+/**
+ *  REST API
+ *
+ */
 
 Route::group(['prefix' => 'api/v1'], function() {
 
   Route::get('/', function () {
-    return 'Hello World';
+    return response()->success();
   });
 
   /**
