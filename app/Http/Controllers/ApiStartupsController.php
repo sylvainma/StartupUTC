@@ -8,11 +8,14 @@ use App\Http\Controllers\ApiBaseController;
 
 use App\Http\Controllers\ApiAddressController;
 use App\Http\Controllers\ApiCompanyController;
+use App\Http\Controllers\ApiKeywordsController;
+use App\Http\Controllers\ApiIndividualsController;
 
 use App\Address;
 use App\Startup;
 use App\Company;
 use App\Keyword;
+use App\Individual;
 
 class ApiStartupsController extends ApiBaseController
 {
@@ -146,7 +149,7 @@ class ApiStartupsController extends ApiBaseController
   {
     $s = Startup::findOrFail($id);
 
-    if($request->input('name') && $key = Keyword::where('name', $request->input('name'))->first())
+    if($request->input('id') && $key = Keyword::where('id', $request->input('id'))->first())
     {
       // Dans le cas où le keyword existe déjà
       $s->keywords()->attach($key->id);
@@ -179,6 +182,55 @@ class ApiStartupsController extends ApiBaseController
 
    if($s->keywords()->where('id', $idk)->first()) {
      $s->keywords()->detach($idk);
+     return response()->success();
+   }
+   else
+     return $controller->destroy(-1);
+  }
+
+  /**
+   * Ajoute un Individual
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+  */
+  public function storeIndividual(Request $request, $id)
+  {
+    $s = Startup::findOrFail($id);
+
+    if($request->input('id') && $ind = Individual::where('id', $request->input('id'))->first())
+    {
+      // Dans le cas où l'Individual existe déjà
+      $s->individuals()->attach($ind->id);
+    }
+    else
+    {
+      $controller = new ApiIndividualsController();
+      if( ($res = $controller->store($request)) && $res->status() != 200)
+       return $res;
+
+      $c = Individual::orderby('created_at', 'desc')->first();
+      $s->individuals()->attach($c->id);
+    }
+
+    $s->save();
+    return response()->success();
+  }
+
+  /**
+   * Supprime un Individual
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function destroyIndividual($id, $idi)
+  {
+   $s = Startup::findOrFail($id);
+   $k = Individual::findOrFail($idi);
+   $controller = new ApiIndividualsController();
+
+   if($s->individuals()->where('id', $idi)->first()) {
+     $s->individuals()->detach($idi);
      return response()->success();
    }
    else

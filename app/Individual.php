@@ -26,7 +26,7 @@ class Individual extends Model
    * @var array
    */
   public static $rules = [
-    'first_name' => 'required|string'
+    'first_name' => 'required|string',
   ];
 
   /**
@@ -41,7 +41,7 @@ class Individual extends Model
    *
    * @var array
    */
-  protected $hidden = [];
+  protected $hidden = ['pivot'];
 
   /**
    * Attributs rajoutés

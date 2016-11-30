@@ -44,11 +44,16 @@ Route::group(['prefix' => 'api/v1'], function() {
   Route::post('/startups/{id}/keywords', 'ApiStartupsController@storeKeyword');
   Route::delete('/startups/{id}/keywords/{idk}', 'ApiStartupsController@destroyKeyword');
 
-  // individuals
-
   // Founders
-  Route::resource('/founders', 'ApiFoundersController', ['only' => [
-      'index', 'show', 'store', 'update', 'destroy'
+  Route::post('/startups/{id}/founders', 'ApiStartupsController@storeIndividual');
+  Route::delete('/startups/{id}/founders/{idi}', 'ApiStartupsController@destroyIndividual');
+
+  /**
+   *  Individuals
+   *
+   */
+  Route::resource('/individuals', 'ApiIndividualsController', ['only' => [
+     'index', 'show', 'store', 'update', 'destroy'
   ]]);
 
 });
