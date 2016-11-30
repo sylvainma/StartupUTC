@@ -21,6 +21,15 @@ class Startup extends Model
   protected $fillable = ['name'];
 
   /**
+   * Règles pour Validator
+   *
+   * @var array
+   */
+  public static $rules = [
+              'name' => 'required|string',
+          ];
+
+  /**
    * Retourne tous les Founder de la Startup
    *
    */

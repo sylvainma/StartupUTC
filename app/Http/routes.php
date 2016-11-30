@@ -22,9 +22,11 @@ Route::group(['prefix' => 'api/v1'], function() {
     });
 
     // Startups
-    Route::resource('/startups', 'ApiStartupsController');
+    Route::resource('/startups', 'ApiStartupsController', ['only' => [
+        'index', 'show', 'store', 'update', 'destroy'
+    ]]);
 
-    // Tous les fondateurs
+    // Fondateurs
     Route::get('/founders', function () {
       return 'founder';
     });
