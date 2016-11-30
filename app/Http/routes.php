@@ -26,9 +26,9 @@ Route::group(['prefix' => 'api/v1'], function() {
         'index', 'show', 'store', 'update', 'destroy'
     ]]);
 
-    // Fondateurs
-    Route::get('/founders', function () {
-      return 'founder';
-    });
+    // Founders
+    Route::resource('/founders', 'ApiFoundersController', ['only' => [
+        'index', 'show', 'store', 'update', 'destroy'
+    ]]);
 
 });

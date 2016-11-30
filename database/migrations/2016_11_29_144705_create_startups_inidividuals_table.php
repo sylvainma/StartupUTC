@@ -17,8 +17,8 @@ class CreateStartupsInidividualsTable extends Migration
       $table->integer('startup_id')->unsigned();
       $table->timestamps();
 
-      $table->foreign('individual_id')->references('id')->on('individuals');
-      $table->foreign('startup_id')->references('id')->on('startups');
+      $table->foreign('individual_id')->references('id')->on('individuals')->onDelete('cascade');;
+      $table->foreign('startup_id')->references('id')->on('startups')->onDelete('cascade');;
       $table->primary(['individual_id', 'startup_id']);
     });
   }

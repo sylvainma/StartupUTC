@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Startup;
 use Validator;
-use Log;
 
 class ApiStartupsController extends Controller
 {
@@ -97,7 +96,7 @@ class ApiStartupsController extends Controller
       try {
         $s->delete();
       } catch(\Exception $e) {
-        return response()->inputError('Impossible de supprimer la ressource', 500);
+        return response()->error('Impossible de supprimer la ressource', 500);
       }
 
       return response()->success();
