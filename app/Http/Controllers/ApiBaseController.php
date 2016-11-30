@@ -9,7 +9,6 @@ use Schema;
 
 class ApiBaseController extends Controller
 {
-
   /**
    * Model class à gérer via le CRUD
    *
@@ -76,7 +75,7 @@ class ApiBaseController extends Controller
     try {
       $res->save();
     } catch(\Exception $e) {
-      return response()->error('Impossible de sauver la ressource', 500);
+      return response()->error('Impossible de sauver la ressource ' . $this->class, 500);
     }
 
     return response()->success();
@@ -122,7 +121,7 @@ class ApiBaseController extends Controller
     try {
       $res->save();
     } catch(\Exception $e) {
-      return response()->error('Impossible de sauver la ressource', 500);
+      return response()->error('Impossible de sauver la ressource ' . $this->class, 500);
     }
 
     return response()->success();
@@ -141,7 +140,7 @@ class ApiBaseController extends Controller
     try {
       $res->delete();
     } catch(\Exception $e) {
-      return response()->error('Impossible de supprimer la ressource '.$e, 500);
+      return response()->error('Impossible de supprimer la ressource ' . $this->class, 500);
     }
 
     return response()->success();

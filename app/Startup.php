@@ -41,7 +41,7 @@ class Startup extends Model
    *
    * @var array
    */
-  protected $hidden = ['address_id', 'company_id', 'department_id', 'field_id', 'legal_status_id'];
+  protected $hidden = ['address_id', 'company_id', 'department_id', 'field_id', 'legal_status_id', 'owner'];
 
   /**
    * Attributs rajoutés
@@ -83,7 +83,7 @@ class Startup extends Model
    */
   public function company()
   {
-    return $this->belongsTo('App\Company');
+    return $this->belongsTo('App\Company', 'owner');
   }
 
   /**
@@ -137,7 +137,7 @@ class Startup extends Model
    */
   public function getAddressAttribute()
   {
-    return $this->address()->get();
+    return $this->address()->first();
   }
 
   /**
@@ -146,7 +146,7 @@ class Startup extends Model
    */
   public function getCompanyAttribute()
   {
-    return $this->company()->get();
+    return $this->company()->first();
   }
 
   /**
@@ -155,7 +155,7 @@ class Startup extends Model
    */
   public function getDepartmentAttribute()
   {
-    return $this->department()->get();
+    return $this->department()->first();
   }
 
   /**
@@ -164,7 +164,7 @@ class Startup extends Model
    */
   public function getFieldAttribute()
   {
-    return $this->field()->get();
+    return $this->field()->first();
   }
 
   /**
@@ -173,7 +173,7 @@ class Startup extends Model
    */
   public function getLegalStatusAttribute()
   {
-    return $this->legal_status()->get();
+    return $this->legal_status()->first();
   }
 
 }

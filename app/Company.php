@@ -25,7 +25,9 @@ class Company extends Model
    *
    * @var array
    */
-  public static $rules = [];
+  public static $rules = [
+    'name' => 'required|string'
+  ];
 
   /**
    * The attributes that should be casted to native types.

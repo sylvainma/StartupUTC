@@ -25,15 +25,16 @@ class Keyword extends Model
    *
    * @var array
    */
-  public static $rules = [];
+  public static $rules = [
+    'name' => 'required|string|regex:/^[^\s]+$/'
+  ];
 
   /**
    * The attributes that should be casted to native types.
    *
    * @var array
    */
-  protected $casts = [
-  ];
+  protected $casts = [];
 
   /**
    * Attributs cachés

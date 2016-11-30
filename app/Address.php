@@ -11,7 +11,7 @@ class Address extends Model
    *
    * @var string
    */
-  protected $table = 'startups';
+  protected $table = 'addresses';
 
   /**
    * The attributes that are mass assignable.
@@ -25,15 +25,19 @@ class Address extends Model
    *
    * @var array
    */
-  public static $rules = [];
+  public static $rules = [
+    'address' => 'required|string',
+    'city' => 'required|string',
+    'cp' => 'required|integer',
+    'country' => 'required|string', 
+  ];
 
   /**
    * The attributes that should be casted to native types.
    *
    * @var array
    */
-  protected $casts = [
-  ];
+  protected $casts = [];
 
   /**
    * Attributs cachés
