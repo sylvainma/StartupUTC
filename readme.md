@@ -1,9 +1,10 @@
-#### StartupUTC
+# StartupUTC
 
 Outil de visualisation du tissu entrepreunarial de l'UTC. #IC05
+
 Auteurs: Augustin De Champs & Sylvain Marchienne
 
-### Getting started
+## Getting started
 
 Installer les dépendances
 ```
