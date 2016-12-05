@@ -1,12 +1,25 @@
 {
-  "private": true,
+  "name": "startuputc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "prod": "gulp --production",
-    "dev": "gulp watch"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sylvainma/StartupUTC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sylvainma/StartupUTC/issues"
+  },
+  "homepage": "https://github.com/sylvainma/StartupUTC#readme",
   "devDependencies": {
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "laravel-elixir": "^5.0.0",
-    "bootstrap-sass": "^3.0.0"
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^2.2.0"
   }
 }
