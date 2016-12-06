@@ -52,6 +52,13 @@ gulp.task('front_assets_vendor', function() {
 	gulp.src(front + '/node_modules/bootstrap-material-design/dist/js/ripples.min.js')
   .pipe(gulp.dest(dist_front+'/assets/vendor/bootstrap-material-design/js'))
 
+	/*
+	 *	SigmaJS
+	 */
+
+	gulp.src(front + '/assets/vendor/sigmajs/**/*.js')
+  .pipe(gulp.dest(dist_front+'/assets/vendor/sigmajs'))
+
 });
 
 gulp.task('front_app_vendor', function() {
