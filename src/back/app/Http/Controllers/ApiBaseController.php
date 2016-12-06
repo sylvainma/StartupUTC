@@ -45,7 +45,7 @@ class ApiBaseController extends Controller
   public function index()
   {
     $res = call_user_func(array($this->class, 'all'));
-    return $res;
+    return response()->success($res);
   }
 
   /**
@@ -68,13 +68,14 @@ class ApiBaseController extends Controller
 
     // Pour chaque colonne de la table, on regarde si la propriété a été transmise
     foreach($properties as $p) {
-      if($request->input($p))
+      if($request->input($p) && $p != 'id') // On ne s'occupe pas de l'id
         $res[$p] = $request->input($p);
     }
 
     try {
       $res->save();
     } catch(\Exception $e) {
+      Log::debug($e);
       return response()->error('Impossible de sauver la ressource ' . $this->class, 500);
     }
 
@@ -90,7 +91,7 @@ class ApiBaseController extends Controller
   public function show($id)
   {
     $res = call_user_func(array($this->class, 'findOrFail'), [$id])->first();
-    return $res;
+    return response()->success($res);
   }
 
   /**
@@ -114,13 +115,14 @@ class ApiBaseController extends Controller
 
     // Pour chaque colonne de la table, on regarde si la propriété a été transmise
     foreach($properties as $p) {
-      if($request->input($p))
+      if($request->input($p) && $p != 'id') // On ne s'occupe pas de l'id
         $res[$p] = $request->input($p);
     }
 
     try {
       $res->save();
     } catch(\Exception $e) {
+      Log::debug($e);
       return response()->error('Impossible de sauver la ressource ' . $this->class, 500);
     }
 
