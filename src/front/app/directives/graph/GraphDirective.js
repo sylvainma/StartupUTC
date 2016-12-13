@@ -7,6 +7,8 @@ app.directive('graph', function($rootScope) {
     },
     controller: function($scope, $element, $attrs) {
 
+
+
       s = new sigma({
         graph: $scope.data,
         container: 'sigma-container',

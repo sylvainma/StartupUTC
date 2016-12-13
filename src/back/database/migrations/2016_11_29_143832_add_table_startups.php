@@ -19,9 +19,9 @@ class AddTableStartups extends Migration
         $table->date('foundation_date');                            // Date de création (~année)
         $table->integer('field_id')->unsigned()->nullable();        // Domaine d'activité économique
         $table->integer('department_id')->unsigned()->nullable();   // Domaine UTC (quel GX)
-        $table->enum('type', ['service', 'produit', 'autre']);      // Type de valeur: service ou produit
+        $table->enum('type', ['service', 'produit', 'mix']);        // Type de valeur: service ou produit
         $table->text('desc');                                       // Description de la startup
-        $table->integer('nb_employees')->unsigned();                // Nombre d'employés (tranche) -> penser à transformer l'affiche en forme d'intervalle dans le model Startup avec un mutator
+        $table->integer('nb_employees')->unsigned()->nullable();    // Nombre d'employés (tranche) -> penser à transformer l'affiche en forme d'intervalle dans le model Startup avec un mutator
         $table->string('url');                                      // Site officiel de la startup
         $table->enum('status', [                                    // Statut
                                   'en cours de développement',
@@ -29,7 +29,7 @@ class AddTableStartups extends Migration
                                   'abandonné',
                                   'faillite',
                                   'autre'
-        ]);
+        ])->default('en activité');
         $table->integer('owner')->unsigned()->nullable();           // Entreprise qui a racheté
         $table->integer('capital_stock');                           // Capital social
         $table->integer('legal_status_id')->unsigned()->nullable(); // Forme juridique

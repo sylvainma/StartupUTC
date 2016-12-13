@@ -96,6 +96,12 @@ gulp.task('front', ['front_assets_vendor', 'front_app_vendor'], function() {
 	.pipe(concat('app.js'))
   .pipe(gulp.dest(dist_front + '/app'))
 
+	/*
+	 *	CSS
+	 */
+	gulp.src(front + '/assets/css/*')
+	.pipe(gulp.dest(dist_front+'/assets/css'))
+
 });
 
 gulp.task('clean', function() {

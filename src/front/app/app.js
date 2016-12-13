@@ -13,8 +13,11 @@ var app = angular.module('StartupUTC', ['ngRoute', 'ngResource']).constant('__EN
      $routeProvider
      // Home
      .when("/", {
+         templateUrl : "app/components/home/home_index.html"
+     })
+     // Startups
+     .when("/startups", {
          templateUrl : "app/components/startups/startups_index.html"
      })
-
      .otherwise({redirectTo : "/"});
  });
