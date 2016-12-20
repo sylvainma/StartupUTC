@@ -6,7 +6,7 @@ var __ENV = window.__env;
 /**
  *  Déclaration de l'application Angular
  */
-var app = angular.module('StartupUTC', ['ngRoute', 'ngResource']).constant('__ENV', __ENV);;
+var app = angular.module('StartupUTC', ['ngRoute', 'ngResource', 'ui.bootstrap']).constant('__ENV', __ENV);;
 
 
 /**
@@ -22,7 +22,14 @@ app.config(function($routeProvider) {
    .when("/startups", {
        templateUrl : "app/components/startups/startups_index.html"
    })
-   .otherwise({redirectTo : "/"});
+   .when("/startups/:id", {
+       templateUrl : "app/components/startups/startups_show.html"
+   })
+   // Erreurs
+   .when("/error/:status", {
+       templateUrl : "app/components/error/error_show.html"
+   })
+   .otherwise({redirectTo : "/error/404"});
 });
 
 /**

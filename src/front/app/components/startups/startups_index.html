@@ -1,9 +1,17 @@
 <section ng-controller="StartupsCtrl" class="container">
-  <div class="row">
-    <div class="col-md-9">
 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well bs-component">
+        <h1>Rechercher</h1>
+        <div class="form-group label-floating">
+          <input ng-model="startupSearch" placeholder="Rechercher une startup" class="form-control" type="text">
+        </div>
+
+      </div>
     </div>
   </div>
+
   <div class="row">
     <!-- Sidebar de recherche -->
     <div class="col-md-3">
@@ -14,38 +22,48 @@
     <!-- Résultats de recherche -->
     <div class="col-md-9">
 
-      <!-- Barre -->
-      <div class="row">
-        <div class="col-md-12">
-          <form class="form-horizontal">
-            <div class="form-group form-group-lg">
-              <div class="col-sm-10">
-                <input class="form-control" type="text" placeholder="Rechercher">
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
       <!-- Résultats -->
       <div class="row">
         <div class="col-md-12">
-          <div class="list-group">
 
-            <div ng-repeat="startup in startups">
-              <div class="list-group-item">
+          <p ng-show="!startups.length && !loading" class="text-center">
+            Aucun résultat ne correspond à votre recherche.
+          </p>
+
+          <div class="list-group">
+            <div ng-repeat="startup in startups.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:startupSearch">
+              <a  style="display: block; cursor: pointer" class="list-group-item"
+                  ng-href="#/startups/{{ startup.id }}">
                 <div class="row-picture">
                   <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
                 </div>
                 <div class="row-content">
-                  <h4 class="list-group-item-heading">{{ startup.name }}</h4>
-                  <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus</p>
+                  <h4 class="list-group-item-heading">{{ startup.name_official }}</h4>
+                  <p class="list-group-item-text">{{ startup.description }}</p>
                 </div>
-              </div>
+              </a>
               <div class="list-group-separator"></div>
             </div>
-
           </div>
+
+          <div class="col-md-12 text-center">
+            <ul uib-pagination
+                data-ng-show="startups.length > itemsPerPage"
+                total-items="totalItems"
+                ng-model="currentPage"
+                max-size="maxSize"
+                items-per-page="itemsPerPage"
+                class="pagination-sm"
+                boundary-link-numbers="true"
+                rotate="false"
+                first-text="Premier"
+                last-text="Dernier"
+                next-text="Suivant"
+                previous-text="Précédent"
+                template-url="app/directives/pagination/pagination.html">
+            </ul>
+          </div>
+
         </div>
       </div>
 

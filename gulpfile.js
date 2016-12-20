@@ -66,6 +66,13 @@ gulp.task('front_assets_vendor', function() {
 	gulp.src(front + '/assets/vendor/sigmajs/**/*.js')
   .pipe(gulp.dest(dist_front+'/assets/vendor/sigmajs'))
 
+	/*
+	 *	noUISlider
+	 */
+
+	gulp.src(front + '/assets/vendor/nouislider/**/*.js')
+  .pipe(gulp.dest(dist_front+'/assets/vendor/nouislider'))
+
 });
 
 gulp.task('front_app_vendor', function() {
@@ -77,7 +84,8 @@ gulp.task('front_app_vendor', function() {
 	var angular = [
 		front + '/node_modules/angular/angular.min.js',
 		front + '/node_modules/angular-resource/angular-resource.min.js',
-		front + '/node_modules/angular-route/angular-route.min.js'
+		front + '/node_modules/angular-route/angular-route.min.js',
+		front + '/app/vendor/ui-bootstrap-2.2.0.min.js',
 	];
 
 	gulp.src(angular)

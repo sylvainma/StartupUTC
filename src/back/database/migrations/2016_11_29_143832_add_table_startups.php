@@ -19,7 +19,7 @@ class AddTableStartups extends Migration
         $table->date('foundation_date');                            // Date de création (~année)
         $table->integer('field_id')->unsigned()->nullable();        // Domaine d'activité économique
         $table->string('department_id');                            // Département GX
-        $table->text('desc');                                       // Description de la startup
+        $table->text('description');                                // Description de la startup
         $table->enum('status', [                                    // Statut
           'en cours de développement',
           'en activité',

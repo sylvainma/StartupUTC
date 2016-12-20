@@ -48,7 +48,7 @@ class Startup extends Model
    *
    * @var array
    */
-  protected $appends = ['individuals', 'keywords', 'address', 'company', 'department', 'field', 'legal_status'];
+  protected $appends = ['individuals', 'keywords', 'address', 'field', 'legal_status'];
 
   /**
    * Retourne tous les Founder de la Startup
@@ -75,24 +75,6 @@ class Startup extends Model
   public function address()
   {
     return $this->belongsTo('App\Address');
-  }
-
-  /**
-   * Retourne la Company de la Startup
-   *
-   */
-  public function company()
-  {
-    return $this->belongsTo('App\Company', 'owner');
-  }
-
-  /**
-   * Retourne le Department de la Startup
-   *
-   */
-  public function department()
-  {
-    return $this->belongsTo('App\Department');
   }
 
   /**
@@ -138,24 +120,6 @@ class Startup extends Model
   public function getAddressAttribute()
   {
     return $this->address()->first();
-  }
-
-  /**
-   * Retourne la Company de la Startup
-   *
-   */
-  public function getCompanyAttribute()
-  {
-    return $this->company()->first();
-  }
-
-  /**
-   * Retourne le Department de la Startup
-   *
-   */
-  public function getDepartmentAttribute()
-  {
-    return $this->department()->first();
   }
 
   /**
