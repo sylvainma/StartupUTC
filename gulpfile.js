@@ -14,6 +14,13 @@ gulp.task('back', function() {
 
 });
 
+gulp.task('back_without_vendor', function() {
+
+  gulp.src([back + '/**/*', '!' + back + '/vendor/**'], { dot : true })
+  .pipe(gulp.dest('dist/'))
+
+});
+
 gulp.task('front_assets_vendor', function() {
 
 	/*
@@ -99,6 +106,7 @@ gulp.task('front', ['front_assets_vendor', 'front_app_vendor'], function() {
 	/*
 	 *	CSS
 	 */
+
 	gulp.src(front + '/assets/css/*')
 	.pipe(gulp.dest(dist_front+'/assets/css'))
 
@@ -114,7 +122,7 @@ gulp.task('default', ['clean'], function() {
 
 gulp.task('watch', function() {
 
-  gulp.watch(back + '/**/*.*', ['back']);
+  gulp.watch(back + '/**/*.*', ['back_without_vendor']);
   gulp.watch(front + '/**/*.*', ['front']);
 
 });
