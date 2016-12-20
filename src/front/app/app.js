@@ -22,6 +22,9 @@ app.config(function($routeProvider) {
    .otherwise({redirectTo : "/"});
 });
 
+/**
+ *  Supprime le point d'exclamation dans les URLs
+ */
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.html5Mode(false);
   $locationProvider.hashPrefix('!');
