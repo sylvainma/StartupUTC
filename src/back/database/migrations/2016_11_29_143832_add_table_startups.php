@@ -21,11 +21,11 @@ class AddTableStartups extends Migration
         $table->string('department_id');                            // Département GX
         $table->text('desc');                                       // Description de la startup
         $table->enum('status', [                                    // Statut
-                                  'en cours de développement',
-                                  'en activité',
-                                  'abandonné',
-                                  'faillite',
-                                  'autre'
+          'en cours de développement',
+          'en activité',
+          'abandonné',
+          'faillite',
+          'autre'
         ])->default('en activité');
         $table->integer('legal_status_id')->unsigned()->nullable(); // Forme juridique
         $table->string('NAF_code');                                 // Code NAF
