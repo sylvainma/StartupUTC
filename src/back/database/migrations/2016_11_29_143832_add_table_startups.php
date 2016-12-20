@@ -14,15 +14,12 @@ class AddTableStartups extends Migration
     {
       Schema::create('startups', function($table) {
         $table->increments('id');
-        $table->string('name');                                     // Nom
-        $table->string('official_name');                            // Dénomination officielle
+        $table->string('name_official');                            // Nom officiel
+        $table->string('name_commercial');                          // Dénomination officielle
         $table->date('foundation_date');                            // Date de création (~année)
         $table->integer('field_id')->unsigned()->nullable();        // Domaine d'activité économique
-        $table->integer('department_id')->unsigned()->nullable();   // Domaine UTC (quel GX)
-        $table->enum('type', ['service', 'produit', 'mix']);        // Type de valeur: service ou produit
+        $table->string('department_id');                            // Département GX
         $table->text('desc');                                       // Description de la startup
-        $table->integer('nb_employees')->unsigned()->nullable();    // Nombre d'employés (tranche) -> penser à transformer l'affiche en forme d'intervalle dans le model Startup avec un mutator
-        $table->string('url');                                      // Site officiel de la startup
         $table->enum('status', [                                    // Statut
                                   'en cours de développement',
                                   'en activité',
@@ -30,21 +27,21 @@ class AddTableStartups extends Migration
                                   'faillite',
                                   'autre'
         ])->default('en activité');
-        $table->integer('owner')->unsigned()->nullable();           // Entreprise qui a racheté
-        $table->integer('capital_stock');                           // Capital social
         $table->integer('legal_status_id')->unsigned()->nullable(); // Forme juridique
         $table->string('NAF_code');                                 // Code NAF
         $table->string('SIREN');                                    // SIREN
         $table->string('SIRET');                                    // SIRET
         $table->integer('address_id')->unsigned()->nullable();      // Adresse
-        $table->string('infogreffe_fr');                            // Lien infogreffe.fr
-        $table->string('societe_com');                              // Lien societe.com
-        $table->string('source');                                   // Source des infos
+        $table->string('email');                                    // Email
+        $table->string('phone');                                    // Email
+        $table->string('url');                                      // Site officiel de la startup
+        $table->string('facebook');                                 // Facebook de la startup
+        $table->string('twitter');                                  // Twitter de la startup
+        $table->string('linkedin');                                 // Linkedin de la startup
+        $table->string('sources');                                  // Source des infos
         $table->timestamps();
 
         $table->foreign('field_id')->references('id')->on('fields')->onDelete('set null');
-        $table->foreign('department_id')->references('id')->on('fields')->onDelete('set null');
-        $table->foreign('owner')->references('id')->on('companies')->onDelete('set null');
         $table->foreign('legal_status_id')->references('id')->on('legal_statuses')->onDelete('set null');
         $table->foreign('address_id')->references('id')->on('addresses')->onDelete('set null');
       });

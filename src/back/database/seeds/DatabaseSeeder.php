@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
       $i = new Individual(['first_name' => 'Alphonse', 'last_name' => 'Dutronc']);
       $i->save();
 
-      $s = new Startup(['name' => 'Metashot']);
+      $s = new Startup(['name_official' => 'Metashot']);
       $s->save();
 
       $i->startups()->attach($s->id);
