@@ -1,4 +1,7 @@
-var __ENV = { apiUrl : 'http://localhost/StartupUTC/dist/public/api/v1' };
+/**
+ *  Configuration de l'environnement
+ */
+var __ENV = window.__env;
 
 /**
  *  Déclaration de l'application Angular
