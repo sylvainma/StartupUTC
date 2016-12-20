@@ -1,4 +1,4 @@
-var __ENV = { apiUrl : 'http://localhost:8888/Laravel/StartupUTC/dist/public/api/v1' };
+var __ENV = { apiUrl : 'http://localhost/StartupUTC/dist/public/api/v1' };
 
 /**
  *  Déclaration de l'application Angular
