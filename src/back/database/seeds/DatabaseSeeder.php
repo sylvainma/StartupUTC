@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Individual;
-use App\Founder;
-use App\Startup;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,14 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      $i = new Individual(['first_name' => 'Alphonse', 'last_name' => 'Dutronc']);
-      $i->save();
-
-      $s = new Startup(['name_official' => 'Metashot']);
-      $s->save();
-
-      $i->startups()->attach($s->id);
-      // marche aussi: $s->individuals()->attach($i->id);
-
+        // $this->call(UsersTableSeeder::class);
     }
 }
