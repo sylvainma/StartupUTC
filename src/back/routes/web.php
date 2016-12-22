@@ -33,6 +33,13 @@ Route::group(['prefix' => 'api/v1'], function() {
   });
 
   /**
+   *  Recherche
+   *
+   */
+
+  Route::get('/search', 'ApiSearchController@search');
+
+  /**
    *  Startups
    *
    */

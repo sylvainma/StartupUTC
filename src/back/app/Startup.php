@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Startup extends Model
 {
+
+  use Searchable;
+
   /**
    * The table associated with the model.
    *
@@ -18,7 +22,7 @@ class Startup extends Model
    *
    * @var array
    */
-  protected $fillable = ['name'];
+  protected $fillable = ['name_official'];
 
   /**
    * Règles pour Validator
@@ -26,8 +30,8 @@ class Startup extends Model
    * @var array
    */
   public static $rules = [
-              'name' => 'required|string',
-          ];
+      'name_official' => 'required|string',
+  ];
 
   /**
    * The attributes that should be casted to native types.
@@ -41,7 +45,7 @@ class Startup extends Model
    *
    * @var array
    */
-  protected $hidden = ['address_id', 'company_id', 'department_id', 'field_id', 'legal_status_id', 'owner'];
+  protected $hidden = ['address_id', 'department_id', 'field_id', 'legal_status_id', 'owner'];
 
   /**
    * Attributs rajoutés
