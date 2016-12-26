@@ -41,7 +41,7 @@ class Individual extends Model
    *
    * @var array
    */
-  protected $hidden = ['pivot'];
+  protected $hidden = [];
 
   /**
    * Attributs rajoutés
@@ -56,7 +56,7 @@ class Individual extends Model
    */
   public function startups()
   {
-    return $this->belongsToMany('App\Startup');
+    return $this->belongsToMany('App\Startup')->withPivot('job_title');
   }
 
 }

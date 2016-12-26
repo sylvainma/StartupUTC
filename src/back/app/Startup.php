@@ -45,14 +45,14 @@ class Startup extends Model
    *
    * @var array
    */
-  protected $hidden = ['address_id', 'department_id', 'field_id', 'legal_status_id', 'owner'];
+  protected $hidden = ['address_id', 'department_id', 'field_id', 'legal_status_id'];
 
   /**
    * Attributs rajoutés
    *
    * @var array
    */
-  protected $appends = ['individuals', 'keywords', 'address', 'field', 'legal_status'];
+  protected $appends = ['individuals', 'keywords', 'address', 'department', 'field', 'legal_status'];
 
   /**
    * Retourne tous les Founder de la Startup
@@ -60,7 +60,7 @@ class Startup extends Model
    */
   public function individuals()
   {
-    return $this->belongsToMany('App\Individual');
+    return $this->belongsToMany('App\Individual')->withPivot('job_title');
   }
 
   /**
@@ -79,6 +79,15 @@ class Startup extends Model
   public function address()
   {
     return $this->belongsTo('App\Address');
+  }
+
+  /**
+   * Retourne le département
+   *
+   */
+  public function department()
+  {
+    return $this->belongsTo('App\Department');
   }
 
   /**
@@ -125,6 +134,16 @@ class Startup extends Model
   {
     return $this->address()->first();
   }
+
+  /**
+   * Retourne le Department de la Startup
+   *
+   */
+  public function getDepartmentAttribute()
+  {
+    return $this->department()->first();
+  }
+
 
   /**
    * Retourne le Field de la Startup

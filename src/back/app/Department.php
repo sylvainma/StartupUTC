@@ -4,21 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Keyword extends Model
+class Department extends Model
 {
   /**
    * The table associated with the model.
    *
    * @var string
    */
-  protected $table = 'keywords';
+  protected $table = 'departments';
 
   /**
    * The attributes that are mass assignable.
    *
    * @var array
    */
-  protected $fillable = ['name'];
+  protected $fillable = ['name', 'description'];
 
   /**
    * Règles pour Validator
@@ -26,7 +26,6 @@ class Keyword extends Model
    * @var array
    */
   public static $rules = [
-    'name' => 'required|string|regex:/^[^\s]+$/'
   ];
 
   /**
