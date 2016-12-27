@@ -48,7 +48,7 @@ class Individual extends Model
    *
    * @var array
    */
-  protected $appends = [];
+  protected $appends = ['full_name'];
 
   /**
    * Retourne les Startup associées au Founder
@@ -57,6 +57,15 @@ class Individual extends Model
   public function startups()
   {
     return $this->belongsToMany('App\Startup')->withPivot('job_title');
+  }
+
+  /**
+   * Retourne le nom complet
+   *
+   */
+  public function getFullNameAttribute()
+  {
+    return $this->first_name . ' ' . $this->last_name;
   }
 
 }

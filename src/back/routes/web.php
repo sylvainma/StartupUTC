@@ -38,6 +38,7 @@ Route::group(['prefix' => 'api/v1'], function() {
    */
 
   Route::get('/search', 'ApiSearchController@search');
+  Route::post('/search', 'ApiSearchController@search2');
 
   /**
    *  Startups

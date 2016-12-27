@@ -29,7 +29,7 @@ class Address extends Model
     'address' => 'required|string',
     'city' => 'required|string',
     'cp' => 'required|integer',
-    'country' => 'required|string', 
+    'country' => 'required|string',
   ];
 
   /**
@@ -51,5 +51,15 @@ class Address extends Model
    *
    * @var array
    */
-  protected $appends = [];
+  protected $appends = ['full_address'];
+
+  /**
+   * Retourne l'Address complète
+   *
+   */
+  public function getFullAddressAttribute()
+  {
+    return $this->address . "\n" . $this->city . ", " . $this->cp . "\n" . $this->country;  
+  }
+
 }

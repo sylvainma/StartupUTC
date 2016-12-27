@@ -6,6 +6,7 @@ use App\Keyword;
 use App\Department;
 use App\Field;
 use App\Individual;
+use App\Address;
 
 class DatabaseSeeder extends Seeder
 {
@@ -58,6 +59,18 @@ class DatabaseSeeder extends Seeder
           $s->save();
       }
 
+      // Address
+      for ($i = 1; $i <= 15; $i++) {
+        $address = Address::create([
+          'address' => $faker->streetAddress,
+          'city' => $faker->city,
+          'cp' => $faker->postcode,
+          'country' => $faker->country
+        ]);
+
+        Startup::find($faker->numberBetween($min = 1, $max = $limit))->address()->associate($address->id)->save();
+      }
+
       // Keywords
       for ($i = 1; $i <= 15; $i++) {
           $k = Keyword::create([
@@ -73,6 +86,7 @@ class DatabaseSeeder extends Seeder
               'last_name' => $faker->lastName,
               'email' => $faker->companyEmail,
               'promo_utc' => 'GX ' . $faker->year($max = 'now'),
+              'linkedin' => $faker->url,
           ]);
           Startup::find($faker->numberBetween($min = 1, $max = $limit))->individuals()->attach($k, ['job_title' => $faker->jobTitle]);
       }
