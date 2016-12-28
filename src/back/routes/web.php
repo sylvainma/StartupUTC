@@ -87,4 +87,10 @@ Route::group(['prefix' => 'api/v1'], function() {
     'index', 'show'
   ]]);
 
+  /**
+   *  Contact
+   *
+   */
+  Route::post('/contact', 'ApiContactController@contact');
+
 });
