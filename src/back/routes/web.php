@@ -45,34 +45,46 @@ Route::group(['prefix' => 'api/v1'], function() {
    *
    */
 
+  Route::get('/startups/paginate/', 'ApiStartupsController@paginate');
   Route::resource('/startups', 'ApiStartupsController', ['only' => [
-      'index', 'show', 'store', 'update', 'destroy'
+      'index', 'show'
   ]]);
 
   // Address
-  Route::post('/startups/{id}/address', 'ApiStartupsController@storeAddress');
-  Route::match(['put', 'patch'], '/startups/{id}/address', 'ApiStartupsController@updateAddress');
-  Route::delete('/startups/{id}/address', 'ApiStartupsController@destroyAddress');
-
-  // Company
-  Route::post('/startups/{id}/company', 'ApiStartupsController@storeCompany');
-  Route::match(['put', 'patch'], '/startups/{id}/company', 'ApiStartupsController@updateCompany');
-  Route::delete('/startups/{id}/company', 'ApiStartupsController@destroyCompany');
+  //Route::post('/startups/{id}/address', 'ApiStartupsController@storeAddress');
+  //Route::match(['put', 'patch'], '/startups/{id}/address', 'ApiStartupsController@updateAddress');
+  //Route::delete('/startups/{id}/address', 'ApiStartupsController@destroyAddress');
 
   // Keywords
-  Route::post('/startups/{id}/keywords', 'ApiStartupsController@storeKeyword');
-  Route::delete('/startups/{id}/keywords/{idk}', 'ApiStartupsController@destroyKeyword');
+  //Route::post('/startups/{id}/keywords', 'ApiStartupsController@storeKeyword');
+  //Route::delete('/startups/{id}/keywords/{idk}', 'ApiStartupsController@destroyKeyword');
 
   // Founders
-  Route::post('/startups/{id}/founders', 'ApiStartupsController@storeIndividual');
-  Route::delete('/startups/{id}/founders/{idi}', 'ApiStartupsController@destroyIndividual');
+  //Route::post('/startups/{id}/founders', 'ApiStartupsController@storeIndividual');
+  //Route::delete('/startups/{id}/founders/{idi}', 'ApiStartupsController@destroyIndividual');
 
   /**
    *  Individuals
    *
    */
   Route::resource('/individuals', 'ApiIndividualsController', ['only' => [
-     'index', 'show', 'store', 'update', 'destroy'
+     'index', 'show'
+  ]]);
+
+  /**
+   *  Departments
+   *
+   */
+  Route::resource('/departments', 'ApiDepartmentsController', ['only' => [
+    'index', 'show'
+  ]]);
+
+  /**
+   *  Fields
+   *
+   */
+  Route::resource('/fields', 'ApiFieldsController', ['only' => [
+    'index', 'show'
   ]]);
 
 });

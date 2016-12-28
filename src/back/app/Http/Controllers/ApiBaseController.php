@@ -44,6 +44,17 @@ class ApiBaseController extends Controller
    */
   public function index(Request $request)
   {
+    $res = call_user_func(array($this->class, 'all'));
+    return response()->success($res);
+  }
+
+  /**
+   * Index mais avec pagination
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function paginate(Request $request)
+  {
     $res = call_user_func(array($this->class, 'paginate'));
     return response()->success($res);
   }
