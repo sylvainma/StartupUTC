@@ -29,18 +29,32 @@ class ApiSearchController extends Controller
 
         $s = Startup::search($request->get('q'))->get();
 
-        if($request->has('departments')) {
+        if($request->has('departments') && count($request->input('departments')) > 0) {
             $s = $s->whereIn('department_id', $request->input('departments'));
         }
 
-        if($request->has('fields')) {
+        if($request->has('fields') && count($request->input('fields')) > 0) {
             $s = $s->whereIn('field_id', $request->input('fields'));
         }
 
         if($request->has('foundation')) {
-          $start = new \Carbon\Carbon($request->input('foundation')[0]);
-          $end = new \Carbon\Carbon($request->input('foundation')[1]);
-          $s = $s->where('foundation_date', '>=', $start)->where('foundation_date', '<=', $end);
+          $start = \Carbon\Carbon::parse('first day of January '.$request->input('foundation')[0], 'Europe/Paris');
+          $end = \Carbon\Carbon::parse('first day of January '.$request->input('foundation')[1], 'Europe/Paris');
+
+          if($start->diffInYears($end) >= 0) {
+
+            $s = $s->filter(function ($startup, $key) use ($start, $end) {
+
+              // Si la date de foundation est NULL on le prend quand même
+              if(!$startup->foundation_date) return true;
+
+              // Sinon, on check si la date de fondation est dans l'intervalle
+              $date = new \Carbon\Carbon($startup->foundation_date);
+              return ($date->year >= $start->year) && ($date->year <= $end->year);
+
+            });
+
+          }
         }
 
         $s = $s->all();
