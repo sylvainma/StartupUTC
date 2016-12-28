@@ -21,6 +21,7 @@ class ApiContactController extends Controller
       'name' => 'required|string',
       'email' => 'required|email',
       'body' => 'required|string|min:1',
+      'g-recaptcha-response' => 'required',
     ]);
 
     if ($validator->fails())
