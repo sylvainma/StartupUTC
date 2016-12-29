@@ -15,7 +15,6 @@ class CreateStartupsInidividualsTable extends Migration
     Schema::create('individual_startup', function($table){
       $table->integer('individual_id')->unsigned();
       $table->integer('startup_id')->unsigned();
-      $table->string('job_title');
       $table->timestamps();
 
       $table->foreign('individual_id')->references('id')->on('individuals')->onDelete('cascade');;

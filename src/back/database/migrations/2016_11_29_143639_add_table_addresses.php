@@ -14,9 +14,9 @@ class AddTableAddresses extends Migration
     {
       Schema::create('addresses', function($table) {
         $table->increments('id');
-        $table->text('address');
+        $table->text('road');
         $table->string('city');
-        $table->integer('cp');
+        $table->integer('zip_code');
         $table->string('country');
         $table->timestamps();
       });

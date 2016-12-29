@@ -17,6 +17,7 @@ class CreateIndividualsTable extends Migration
       $table->string('first_name');
       $table->string('last_name');
       $table->string('email');
+      $table->string('job_title');
       $table->string('promo_utc');
       $table->timestamps();
     });
