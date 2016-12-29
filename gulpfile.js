@@ -107,7 +107,7 @@ gulp.task('front', ['front_assets_vendor', 'front_app_vendor'], function() {
 	gulp.src(front + '/app/**/*.html')
   .pipe(gulp.dest('dist/public/app'))
 
-	gulp.src([front + '/app/env.js', front + '/app/app.js', front + '/app/**/*.js'])
+	gulp.src([front + '/app/env.js', front + '/app/app.js', front + '/app/**/*.js', '!' + front + '/app/env.example.js'])
 	.pipe(concat('app.js'))
   .pipe(gulp.dest(dist_front + '/app'))
 
