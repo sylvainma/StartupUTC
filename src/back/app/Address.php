@@ -59,7 +59,7 @@ class Address extends Model
    */
   public function getFullAddressAttribute()
   {
-    return $this->address . "\n" . $this->city . ", " . $this->cp . "\n" . $this->country;
+    return $this->road . "\n" . $this->city . ", " . $this->zip_code . "\n" . $this->country;
   }
 
 }
