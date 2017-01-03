@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\JSONResponsesProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 
