@@ -26,9 +26,9 @@ class Address extends Model
    * @var array
    */
   public static $rules = [
-    'address' => 'required|string',
+    'road' => 'required|string',
     'city' => 'required|string',
-    'cp' => 'required|integer',
+    'zip_code' => 'required|integer',
     'country' => 'required|string',
   ];
 
@@ -59,7 +59,7 @@ class Address extends Model
    */
   public function getFullAddressAttribute()
   {
-    return $this->address . "\n" . $this->city . ", " . $this->cp . "\n" . $this->country;  
+    return $this->address . "\n" . $this->city . ", " . $this->cp . "\n" . $this->country;
   }
 
 }
