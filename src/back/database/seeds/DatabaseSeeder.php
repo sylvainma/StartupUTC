@@ -62,9 +62,9 @@ class DatabaseSeeder extends Seeder
       // Address
       for ($i = 1; $i <= 15; $i++) {
         $address = Address::create([
-          'address' => $faker->streetAddress,
+          'road' => $faker->streetAddress,
           'city' => $faker->city,
-          'cp' => $faker->postcode,
+          'zip_code' => $faker->postcode,
           'country' => $faker->country
         ]);
 
