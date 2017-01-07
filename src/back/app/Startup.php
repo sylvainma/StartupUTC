@@ -8,7 +8,7 @@ use Laravel\Scout\Searchable;
 class Startup extends Model
 {
 
-  use Searchable;
+  //use Searchable;
 
   /**
    * The table associated with the model.

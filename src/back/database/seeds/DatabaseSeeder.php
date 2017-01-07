@@ -19,17 +19,6 @@ class DatabaseSeeder extends Seeder
     {
       // Données de base (départements, etc)
       $this->call(BaseSeeder::class);
-
-      if(env('APP_ENV') != 'production')
-      {
-        // Données générées avec Faker
-        $this->call(FakeSeeder::class);
-      }
-      else
-      {
-        // Réelles données
-        $this->call(TrueSeeder::class);
-      }
-
+      $this->call(TrueSeeder::class);
     }
 }
