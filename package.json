@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sylvainma/StartupUTC-website.git"
+    "url": "git+https://github.com/sylvainma/StartupUTC.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sylvainma/StartupUTC-website/issues"
+    "url": "https://github.com/sylvainma/StartupUTC/issues"
   },
-  "homepage": "https://github.com/sylvainma/StartupUTC-website#readme",
+  "homepage": "https://github.com/sylvainma/StartupUTC#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
     "del": "^2.2.2",
