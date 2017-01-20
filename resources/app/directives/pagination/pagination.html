@@ -1,0 +1,42 @@
+<div class="btn-group">
+  <a  ng-if="::boundaryLinks"
+      ng-class="{disabled: noPrevious()||ngDisabled}"
+      class="btn btn-raised pagination-first"
+      href role="button"
+      ng-click="selectPage(1, $event)"
+      ng-disabled="noPrevious()||ngDisabled"
+      uib-tabindex-toggle>{{::getText('first')}}<div class="ripple-container"></div></a>
+
+  <a  ng-if="::directionLinks"
+      ng-class="{disabled: noPrevious()||ngDisabled}"
+      class="btn btn-raised pagination-prev"
+      href role="button"
+      ng-click="selectPage(page - 1, $event)"
+      ng-disabled="noPrevious()||ngDisabled"
+      uib-tabindex-toggle>{{::getText('previous')}}<div class="ripple-container"></div></a>
+
+  <a  ng-repeat="page in pages track by $index"
+      ng-if="::directionLinks"
+      ng-class="{active: page.active,disabled: ngDisabled&&!page.active}"
+      class="btn btn-raised pagination-page"
+      href role="button"
+      ng-click="selectPage(page.number, $event)"
+      ng-disabled="ngDisabled&&!page.active"
+      uib-tabindex-toggle>{{page.text}}<div class="ripple-container"></div></a>
+
+  <a  ng-if="::directionLinks"
+      ng-class="{disabled: noNext()||ngDisabled}"
+      class="btn btn-raised pagination-next"
+      href role="button"
+      ng-click="selectPage(page + 1, $event)"
+      ng-disabled="noNext()||ngDisabled"
+      uib-tabindex-toggle>{{::getText('next')}}<div class="ripple-container"></div></a>
+
+  <a  ng-if="::boundaryLinks"
+      ng-class="{disabled: noNext()||ngDisabled}"
+      class="btn btn-raised pagination-last"
+      href role="button"
+      ng-click="selectPage(totalPages, $event)"
+      ng-disabled="noNext()||ngDisabled"
+      uib-tabindex-toggle>{{::getText('last')}}<div class="ripple-container"></div></a>
+</div>

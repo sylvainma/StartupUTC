@@ -1,0 +1,78 @@
+  <!--     *********    CONTACT US 2     *********      -->
+
+	<div class="contactus-2">
+		<div id="contactUs2Map" class="map"></div>
+
+		<div class="card card-contact card-raised">
+				<div class="header header-primary text-center">
+					<h4 class="card-title">Contact</h4>
+				</div>
+				<div class="content">
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="info info-horizontal">
+								<div class="icon icon-primary">
+									<i class="material-icons">phone</i>
+								</div>
+								<div class="description">
+									<h5 class="info-title">Téléphone</h5>
+									<p>{{ startup.phone }}
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="info info-horizontal">
+								<div class="icon icon-primary">
+									<i class="material-icons">pin_drop</i>
+								</div>
+								<div class="description">
+									<h5 class="info-title">Adresse</h5>
+									<p> Bld Mihail Kogalniceanu, nr. 8,<br>
+										7652 Bucharest,<br>
+										Romania
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="info info-horizontal">
+								<div class="icon icon-primary">
+									<i class="material-icons">mail</i>
+								</div>
+								<div class="description">
+									<h5 class="info-title">Email</h5>
+									<p><a ng-href="mailto:{{ startup.email }}">{{ startup.email }}</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="info info-horizontal">
+								<div class="icon icon-primary">
+									<i class="material-icons">web</i>
+								</div>
+								<div class="description">
+									<h5 class="info-title">Web</h5>
+									<p><a ng-href="mailto:{{ startup.url }}">{{ startup.url }}</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+		</div>
+
+	</div>
+
+  <script type="text/javascript">
+	$(document).ready(function(){
+    materialKitDemo.initContactUs2Map();
+	});
+	</script>
+
+	<!--     *********    END CONTACT US 2      *********      -->

@@ -1,0 +1,25 @@
+<div class="card card-nav-tabs">
+  <div class="header header-primary">
+    <div class="nav-tabs-navigation">
+      <div class="nav-tabs-wrapper text-center">
+        <h4>{{ individual.full_name }}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="tab-content text-center">
+      <h5 ng-if="individual.promo_utc">({{ individual.promo_utc }})</h5>
+      <h5 ng-if="individual.pivot.job_title">{{ individual.pivot.job_title }}</h5>
+      <p>
+        <a  ng-if="individual.linkedin" ng-href="{{ individual.linkedin }}"
+            target="_blank" class="btn btn-just-icon btn-round btn-linkedin">
+          <i class="fa fa-linkedin"></i>
+        </a>
+        <a  ng-if="individual.email" ng-href="mailto:{{ individual.email }}"
+            class="btn btn-just-icon btn-round">
+          <i class="fa fa-envelope"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

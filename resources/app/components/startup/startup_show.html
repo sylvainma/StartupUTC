@@ -1,0 +1,173 @@
+<section ng-controller="StartupCtrl">
+
+  <div class="header header-filter">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="brand">
+						<h1>{{ startup.name_official }}</h1>
+            <h3 ng-if="startup.name_commercial">
+              <i>{{ startup.name_commercial }}</i>
+            </h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <section id="presentation">
+	   <div class="main main-raised">
+		<div class="container">
+    	<div class="section text-center section-landing">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h2 class="title">Présentation</h2>
+                <h5 class="description">{{ startup.description }}
+								<p ng-if="startup.url" class="text-center">
+									<a class="btn btn-simple btn-primary" ng-href="startup.url" target="_blank">{{ startup.url }}</a>
+								</p>
+							</h5>
+            </div>
+        </div>
+				<div class="row">
+          <div class="col-sm-4">
+						<div class="info">
+							<div class="icon icon-primary">
+								<i class="fa fa-flask" aria-hidden="true"></i>
+							</div>
+							<h4 class="info-title">Domaine</h4>
+							<p>{{ startup.department.description }}</p>
+						</div>
+          </div>
+          <div ng-if="startup.keywords.length" class="col-sm-4">
+						<div class="info">
+							<div class="icon icon-primary">
+								<i class="fa fa-tag" aria-hidden="true"></i>
+							</div>
+							<h4 class="info-title">Mots clés</h4>
+							<h4>
+								<span ng-repeat="keyword in startup.keywords" class="label label-default label-big">{{ keyword.name }}</span>
+							</h4>
+						</div>
+          </div>
+          <div ng-if="startup.twitter || startup.facebook || startup.linkedin" class="col-sm-4">
+						<div class="info">
+							<div class="icon icon-primary">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+							</div>
+							<h4 class="info-title">Réseaux sociaux</h4>
+							<p>
+                <a ng-if="startup.linkedin" ng-href="{{ startup.linkedin }}" target="_blanck" class="btn btn-just-icon btn-round btn-linkedin">
+	          			<i class="fa fa-linkedin"></i>
+	          		</a>
+								<a ng-if="startup.twitter" ng-href="{{ startup.twitter }}" target="_blanck" class="btn btn-just-icon btn-round btn-twitter">
+	          			<i class="fa fa-twitter"></i>
+	          		</a>
+	              <a ng-if="startup.facebook" ng-href="{{ startup.facebook }}" target="_blanck" class="btn btn-just-icon btn-round btn-facebook">
+	          			<i class="fa fa-facebook"></i>
+	          		</a>
+							</p>
+						</div>
+          </div>
+        </div>
+      </div>
+		</div>
+	</div>
+  </section>
+
+  <section id="network" ng-show="startup.individuals.length">
+  	<div class="space-100"></div>
+  	<div class="main main-raised">
+  		<div class="section section-infos">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h2 class="title">Réseau UTC</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div  ng-repeat="individual in startup.individuals">
+              <div ng-if="$index % 2 == 0" class="visible-sm clearfix"></div>
+              <div ng-if="$index % 3 == 0" class="hidden-sm clearfix"></div>
+              <div class="col-sm-6 col-md-4">
+                <individual-card individual="individual"></individual-card>
+              </div>
+            </div>
+          </div>
+        </div>
+  		</div>
+    </div>
+  </section>
+
+  <section id="contact" ng-show="startup.address || startup.phone || startup.email || startup.url">
+  	<div class="space-100"></div>
+  	<div class="main main-raised">
+		<div class="section section-infos">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+              <h2 class="title">Contact</h2>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="row text-center">
+            <div class="col-sm-6">
+              <div class="info">
+                <div class="icon icon-primary">
+								  <i class="fa fa-phone" aria-hidden="true"></i>
+							  </div>
+                <div class="description">
+                  <h5 class="info-title">Téléphone</h5>
+                  <p>{{ startup.phone }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="info">
+                <div class="icon icon-primary">
+								  <i class="fa fa-map-marker" aria-hidden="true"></i>
+							  </div>
+                <div class="description">
+                  <h5 class="info-title">Adresse</h5>
+                  <p style="white-space: pre;"> {{ startup.address.full_address }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row text-center">
+            <div class="col-sm-6">
+              <div class="info">
+                <div class="icon icon-primary">
+								  <i class="fa fa-envelope" aria-hidden="true"></i>
+							  </div>
+                <div class="description">
+                  <h5 class="info-title">Email</h5>
+                  <p><a ng-href="mailto:{{ startup.email }}">{{ startup.email }}</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="info">
+                <div class="icon icon-primary">
+								  <i class="fa fa-external-link" aria-hidden="true"></i>
+							  </div>
+                <div class="description">
+                  <h5 class="info-title">Web</h5>
+                  <p><a ng-href="mailto:{{ startup.url }}">{{ startup.url }}</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+		</div>
+  </div>
+  </section>
+
+</section>
+<main-footer></main-footer>

@@ -3,11 +3,11 @@ const elixir = require('laravel-elixir');
 var gulp = require('gulp'),
 	notify = require('gulp-notify'),
 	del = require('del'),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+	sass = require('gulp-sass'),
+	sourcemaps = require('gulp-sourcemaps');
 
-var front = 'src/front',
-		dist_front = 'dist/public',
-    back = 'src/back';
+var src = 'resources';
 
 /*
  |--------------------------------------------------------------------------
@@ -21,47 +21,84 @@ var front = 'src/front',
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
-});
-
-gulp.task('back', function() {
-
-  gulp.src(back + '/**/*', { dot : true })
-  .pipe(gulp.dest('dist/'))
-
-});
-
-gulp.task('back_without_vendor', function() {
-
-  gulp.src([back + '/**/*', '!' + back + '/vendor/**'], { dot : true })
-  .pipe(gulp.dest('dist/'))
-
-});
-
-gulp.task('front', function() {
-
-	/*
-	 *	Index.html
-	 */
-
-  gulp.src(front + '/index.html')
-  .pipe(concat('app.php'))
-  .pipe(gulp.dest('dist/resources/views'))
-
-});
-
-gulp.task('clean', function() {
-    return del(['dist/*']);
+	mix.task('default');
 });
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('back', 'front');
+    gulp.start('app', 'assets');
+});
+
+gulp.task('clean', function() {
+    return del(['public/app/**/*', 'public/assets/**/*']);
 });
 
 gulp.task('watch', function() {
+  gulp.watch('resources/**/*', ['front']);
+});
 
-  gulp.watch(back + '/**/*.*', ['back_without_vendor']);
-  gulp.watch(front + '/**/*.*', ['front']);
+gulp.task('assets', function() {
+
+  // Material Kit Pro CSS
+  gulp.src(src + '/assets/sass/material-kit.scss')
+	.pipe(sourcemaps.init())
+  .pipe(sass().on('error', sass.logError))
+	.pipe(sourcemaps.write())
+  .pipe(gulp.dest('public/assets/css'));
+
+	// StartupUTC CSS
+	gulp.src(src + '/assets/sass/startuputc.scss')
+	.pipe(sourcemaps.init())
+	.pipe(sass().on('error', sass.logError))
+	.pipe(sourcemaps.write())
+	.pipe(gulp.dest('public/assets/css'));
+
+	// assets
+	gulp.src([src + '/assets/**/*', '!' + src + '/assets/{sass,sass/**}'])
+	.pipe(gulp.dest('public/assets'))
+
+});
+
+gulp.task('app', function() {
+
+	// Vendor
+	var angular = [
+		src + '/app/vendor/underscore.min.js',
+    src + '/app/vendor/angular.min.js',
+    src + '/app/vendor/angular-resource.min.js',
+    src + '/app/vendor/angular-route.min.js',
+    src + '/app/vendor/ui-bootstrap-2.2.0.min.js',
+		src + '/app/vendor/arrive.min.js',
+		src + '/app/vendor/nouislider.min.js',
+  ];
+  gulp.src(angular)
+  .pipe(concat('vendor.js'))
+	.pipe(sourcemaps.init())
+	.pipe(sourcemaps.write())
+  .pipe(gulp.dest('public/app/vendor'))
+
+	// Env
+  gulp.src(src + '/app/env.js')
+  .pipe(gulp.dest('public/app'))
+
+  // App
+	var app = [
+		src + '/app/app.js',
+		src + '/app/services/**/*.js',
+		src + '/app/directives/**/*.js',
+		src + '/app/components/**/*.js',
+	];
+  gulp.src(app)
+	.pipe(concat('app.js'))
+	.pipe(sourcemaps.init())
+	.pipe(sourcemaps.write())
+  .pipe(gulp.dest('public/app'))
+
+  // Components
+  gulp.src(src + '/app/components/**/*.html')
+  .pipe(gulp.dest('public/app/components'))
+
+  // Directives
+  gulp.src(src + '/app/directives/**/*.html')
+  .pipe(gulp.dest('public/app/directives'))
 
 });

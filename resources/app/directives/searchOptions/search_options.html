@@ -1,0 +1,37 @@
+<div class="card card-options">
+  <div class="content">
+    <h4 class="card-title">
+      Date de fondation
+    </h4>
+    <div class="row text-center">
+      <div class="col-xs-6"><h6><span ng-bind="foundation[0]"></span></h6></div>
+      <div class="col-xs-6"><h6><span ng-bind="foundation[1]"></span></h6></div>
+    </div>
+    <div  slider class="slider slider-primary"
+          ng-from="foundation[0]"
+          ng-to="foundation[1]"
+          start="foundationOpt.start"
+          end="foundationOpt.end"
+          step=1></div>
+  </div>
+</div>
+
+<div class="card card-options">
+  <div class="content">
+    <h4 class="card-title">
+      Départements
+    </h4>
+    <check-list data="depts" checked="deptsChecked"></check-list>
+  </div>
+</div>
+
+<div class="card">
+  <div class="content">
+    <h4 class="card-title">
+      Domaines
+    </h4>
+    <div class="card-options">
+      <check-list data="fields" checked="fieldsChecked"></check-list>
+    </div>
+  </div>
+</div>

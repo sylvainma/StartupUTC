@@ -1,0 +1,13 @@
+<div class="checkbox">
+  <label>
+    <input type="checkbox" ng-checked="allChecked()" ng-click="checkAll()">
+    <span class="checkbox-material"><span class="check"></span></span>Tous
+  </label>
+</div>
+<div  ng-repeat="element in data"
+      class="checkbox">
+  <label>
+    <input type="checkbox" ng-click="check(element.id)" ng-checked="isChecked(element.id)">
+    <span class="checkbox-material"><span class="check"></span></span>{{ element.name }}
+  </label>
+</div>
