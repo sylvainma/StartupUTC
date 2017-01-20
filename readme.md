@@ -8,12 +8,11 @@ Auteurs: Augustin De Champs & Sylvain Marchienne
 
 Installer les dépendances
 ```
+composer install
 npm install
 ```
 
-Compiler une version distribuable
+Compiler le projet
 ```
 gulp
 ```
-
-Le dosier `dist/` contient une l'app Laravel distribuable du projet.
