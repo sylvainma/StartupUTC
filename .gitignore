@@ -4,6 +4,9 @@ Homestead.json
 Homestead.yaml
 .env
 
+nodes.csv
+edges.csv
+
 /public/storage
 /public/app
 /public/assets
