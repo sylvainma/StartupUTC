@@ -105,7 +105,7 @@
                 <div class="card center">
                   <div class="card-content">
                     <span class="card-title">{{ $ind->full_name }}</span><br>
-                    <h5 class="light">{{ $ind->job_title }}</h5>
+                    <h6>{{ $ind->pivot->job_title }}</h5>
 										@if ($ind->linkedin)
                     	<a href="{{ $ind->linkedin }}" target="_blank" class="btn-floating btn-small waves-effect waves-light"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 										@endif
@@ -123,8 +123,8 @@
         <div class="row">
           <div class="col s12 center">
             <h5 class="light">Des informations sont manquantes, erronées ou confidentielles ?</h5><br>
-            <a href="" target="_blank" class="btn btn-large waves-effect waves-light"><i class="material-icons left">mode_edit</i> Corriger</a>
-            <a href="" target="_blank" class="btn btn-large waves-effect waves-light"><i class="material-icons left">email</i> Nous contacter</a>
+            <a href="{{ route('startups.edit', ['startup' => $s]) }}" class="btn btn-large waves-effect waves-light"><i class="material-icons left">mode_edit</i> Corriger</a>
+            <a href="{{ route('contact') }}" class="btn btn-large waves-effect waves-light"><i class="material-icons left">email</i> Nous contacter</a>
           </div>
         </div>
       </div>
