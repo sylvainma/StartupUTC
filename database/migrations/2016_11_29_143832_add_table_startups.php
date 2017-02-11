@@ -39,6 +39,7 @@ class AddTableStartups extends Migration
         $table->string('twitter');                                  // Twitter de la startup
         $table->string('linkedin');                                 // Linkedin de la startup
         $table->string('sources');                                  // Source des infos
+        $table->string('slug');                                     // URL sur le site
         $table->timestamps();
 
         $table->foreign('field_id')->references('id')->on('fields')->onDelete('set null');

@@ -14,8 +14,8 @@
     <nav class="nav-wrapper bordered z-depth-0">
       <div class="container">
         <div class="col s12">
-          <a href="./" class="breadcrumb">StartupUTC</a>
-          <a href="./search" class="breadcrumb">Explorer</a>
+          <a href="{{ route('index') }}" class="breadcrumb">StartupUTC</a>
+          <a href="{{ route('search') }}" class="breadcrumb">Explorer</a>
           <a class="breadcrumb">Smeal</a>
         </div>
       </div>

@@ -14,7 +14,7 @@
     <nav class="nav-wrapper bordered z-depth-0">
       <div class="container">
         <div class="col s12">
-          <a href="./" class="breadcrumb">StartupUTC</a>
+          <a href="{{ route('index') }}" class="breadcrumb">StartupUTC</a>
           <a class="breadcrumb">Contact</a>
         </div>
       </div>

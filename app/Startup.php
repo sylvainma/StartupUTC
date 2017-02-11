@@ -4,11 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Startup extends Model
 {
 
   use Searchable;
+  use Sluggable;
+
+  /**
+   * Return the sluggable configuration array for this model.
+   *
+   * @return array
+   */
+  public function sluggable()
+  {
+      return [
+          'slug' => [
+              'source' => 'name_official'
+          ]
+      ];
+  }
 
   /**
    * The table associated with the model.
@@ -53,6 +69,16 @@ class Startup extends Model
    * @var array
    */
   protected $appends = ['individuals', 'keywords', 'address', 'department', 'field', 'legal_status'];
+
+  /**
+   * Get the route key for the model.
+   *
+   * @return string
+   */
+  public function getRouteKeyName()
+  {
+      return 'slug';
+  }
 
   /**
    * Retourne tous les Founder de la Startup

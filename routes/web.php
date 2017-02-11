@@ -18,19 +18,17 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/search', function () {
     return view('search');
-});
+})->name('search');
 
-Route::get('/startup', function () {
-    return view('startup');
-});
+Route::get('/startups/{startup}', 'StartupController@show');
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
 
 /**
  *  REST API

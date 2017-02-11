@@ -159,6 +159,7 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
     ],
 

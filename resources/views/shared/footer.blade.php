@@ -4,16 +4,16 @@
 
       <div class="col s6 m4 center">
         <a href="http://opendatalab.xyz" target="_blank">
-          <img src="assets/img/logo_white_small.png" height="120" alt="Open Datalab" />
+          <img src="{{ asset('assets/img/logo_white_small.png') }}" height="120" alt="Open Datalab" />
         </a>
       </div>
 
       <div class="col s6 m4">
         <h5>Liens</h5>
         <ul>
-          <li><a href="./contact">Contact</a></li>
+          <li><a href="{{ route('contact') }}">Contact</a></li>
           <li><a href="http://opendatalab.xyz" target="_blank">Open Datalab</a></li>
-          <li><a href="./legal">Mentions légales</a></li>
+          <li><a href="">Mentions légales</a></li>
         </ul>
       </div>
 
