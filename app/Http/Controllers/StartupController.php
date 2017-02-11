@@ -15,6 +15,6 @@ class StartupController extends Controller
    */
   public function show(Request $request, Startup $startup)
   {
-    return view('startup');
+    return view('startup', ['s' => $startup]);
   }
 }
