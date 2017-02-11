@@ -1,32 +1,23 @@
-$(document).ready(function(){
+$(function(){
+  $('.scrollspy').scrollSpy();
 
-  // Bugfix MaterialKitJS & ArriveJS
-  // https://github.com/FezVrasta/bootstrap-material-design/issues/391
+  $('.collapsible').collapsible();
 
-  $.material.togglebutton = function(selector) {
-    // Add fake-checkbox to material checkboxes
-    $((selector) ? selector : this.options.togglebuttonElements)
-      .filter(":notmdproc")
-      .filter(function(){ //added this filter to skip checkboxes that were already initialized
-        return $(this).parent().find(".toggle").length === 0;
-      })
-      .data("mdproc", true)
-      .after("<span class=toggle></span>");
-  };
+  $('.toc-wrapper').pushpin({
+    top: $('header').height(),
+  });
 
-  $.material.checkbox = function(selector) {
-      // Add fake-checkbox to material checkboxes
-      $((selector) ? selector : this.options.checkboxElements)
-              .filter(":notmdproc")
-              .filter(function(){ //added this filter to skip checkboxes that were already initialized
-                  return $(this).parent().find(".check").length === 0;
-              })
-              .data("mdproc", true)
-              .after("<span class=check></span>");
-  };
-
-
-  // Init Material scripts for buttons ripples, inputs animations etc, more info on the next link https://github.com/FezVrasta/bootstrap-material-design#materialjs
-  $.material.init();
-
+  $('input.autocomplete').autocomplete({
+    data: {
+      "Apple": null,
+      "Aqlskjdlkqjsd": null,
+      "Alexandre": null,
+      "Alqsd": null,
+      "Apour": null,
+      "Alex": null,
+      "Microsoft": null,
+      "Google": null
+    },
+    limit: 1, // The max amount of results that can be shown at once. Default: Infinity.
+  });
 });

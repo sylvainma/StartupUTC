@@ -17,9 +17,20 @@
  */
 
 Route::get('/', function () {
-    return view('app');
+    return view('index');
 });
 
+Route::get('/search', function () {
+    return view('search');
+});
+
+Route::get('/startup', function () {
+    return view('startup');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 /**
  *  REST API

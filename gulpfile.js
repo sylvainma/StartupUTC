@@ -39,14 +39,14 @@ gulp.task('watch', function() {
 gulp.task('assets', function() {
 
   // Material Kit Pro CSS
-  gulp.src(src + '/assets/sass/material-kit.scss')
+  gulp.src(src + '/assets/sass/materialize.scss')
 	.pipe(sourcemaps.init())
   .pipe(sass().on('error', sass.logError))
 	.pipe(sourcemaps.write())
   .pipe(gulp.dest('public/assets/css'));
 
 	// StartupUTC CSS
-	gulp.src(src + '/assets/sass/startuputc.scss')
+	gulp.src(src + '/assets/sass/style.scss')
 	.pipe(sourcemaps.init())
 	.pipe(sass().on('error', sass.logError))
 	.pipe(sourcemaps.write())
