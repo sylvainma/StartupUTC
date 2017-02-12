@@ -50,11 +50,11 @@
 
           <div class="row">
             <div class="input-field col s12 m6">
-              <input value="{{ old('name_official', $s->name_official) }}" name="name_official" id="name_official" type="text" class="validate">
+              <input value="{{ old('name_official', $s->name_official) }}" name="name_official" id="name_official" type="text"  required>
               <label for="name_official">Nom officiel</label>
             </div>
             <div class="input-field col s12 m6">
-              <input value="{{ old('name_official', $s->name_commercial) }}" name="name_commercial" id="name_commercial" type="text" class="validate">
+              <input value="{{ old('name_official', $s->name_commercial) }}" name="name_commercial" id="name_commercial" type="text" >
               <label for="name_commercial">Nom commercial</label>
             </div>
           </div>
@@ -89,7 +89,7 @@
 						</select>
 					</div>
 					<div class="input-field col s6">
-						<input value="{{ old('field_id_other') }}" name="field_id_other" id="field_id_other" type="text" class="validate">
+						<input value="{{ old('field_id_other') }}" name="field_id_other" id="field_id_other" type="text" >
 						<label for="field_id_other">Autre</label>
 					</div>
 				</div>
@@ -132,15 +132,15 @@
 
 				<div class="row">
 					<div class="input-field col s12 m4">
-						<input value="{{ old('NAF_code', $s->NAF_code) }}" name="NAF_code" id="NAF_code" type="text" class="validate">
+						<input value="{{ old('NAF_code', $s->NAF_code) }}" name="NAF_code" id="NAF_code" type="text" >
 						<label for="NAF_code">Code NAF</label>
 					</div>
 					<div class="input-field col s12 m4">
-						<input value="{{ old('SIREN', $s->SIREN) }}" name="SIREN" id="SIREN" type="text" class="validate">
+						<input value="{{ old('SIREN', $s->SIREN) }}" name="SIREN" id="SIREN" type="text" >
 						<label for="SIREN">SIREN</label>
 					</div>
 					<div class="input-field col s12 m4">
-						<input value="{{ old('SIRET', $s->SIRET) }}" name="SIRET" id="SIRET" type="text" class="validate">
+						<input value="{{ old('SIRET', $s->SIRET) }}" name="SIRET" id="SIRET" type="text" >
 						<label for="SIRET">SIRET</label>
 					</div>
 				</div>
@@ -155,33 +155,33 @@
 
 				<div class="row">
 					<div class="input-field col s12">
-						<input value="{{ old('url', $s->url) }}" name="url" id="url" type="url" class="validate">
+						<input value="{{ old('url', $s->url) }}" name="url" id="url" type="url" >
 						<label for="url">Site web (URL)</label>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="input-field col s12 m6">
-						<input value="{{ old('email', $s->email) }}" name="email" id="email" type="email" class="validate">
+						<input value="{{ old('email', $s->email) }}" name="email" id="email" type="email" >
 						<label for="email">Email</label>
 					</div>
 					<div class="input-field col s12 m6">
-						<input value="{{ old('phone', $s->phone) }}" name="phone" id="phone" class="validate" type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$">
+						<input value="{{ old('phone', $s->phone) }}" name="phone" id="phone"  type="tel">
 						<label for="phone">Téléphone</label>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="input-field col s12 m4">
-						<input value="{{ old('linkedin', $s->linkedin) }}" name="linkedin" id="linkedin" type="url" class="validate">
+						<input value="{{ old('linkedin', $s->linkedin) }}" name="linkedin" id="linkedin" type="url" >
 						<label for="linkedin">Linkedin (URL)</label>
 					</div>
 					<div class="input-field col s12 m4">
-						<input value="{{ old('twitter', $s->twitter) }}" name="twitter" id="twitter" type="url" class="validate">
+						<input value="{{ old('twitter', $s->twitter) }}" name="twitter" id="twitter" type="url" >
 						<label for="twitter">Twitter (URL)</label>
 					</div>
 					<div class="input-field col s12 m4">
-						<input value="{{ old('facebook', $s->facebook) }}" name="facebook" id="facebook" type="url" class="validate">
+						<input value="{{ old('facebook', $s->facebook) }}" name="facebook" id="facebook" type="url" >
 						<label for="facebook">Facebook (URL)</label>
 					</div>
 				</div>
@@ -191,6 +191,13 @@
 
 		<div class="section section-grey">
 			<div class="container">
+
+				<div class="row">
+					<div class="col s12">
+						<label for="editor_email">Votre email (pour vous informer lorsque vos modifications auront été acceptées)</label>
+						<input value="{{ old('editor_email', '') }}" name="editor_email" id="editor_email" type="email" class="validate" required>
+					</div>
+				</div>
 
 				<div class="row">
 					<div class="col s12 center">

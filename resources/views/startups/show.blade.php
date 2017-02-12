@@ -26,6 +26,15 @@
       <div class="container">
         <div class="row">
           <div class="col s12">
+
+						@if (session('status'))
+							<div class="card-alert success">
+								<p><i class="material-icons">check_circle</i>
+									Vos modifications ont bien été enregistrées et seront examinées prochainement.
+									Vous recevrez un mail vous informant de cette validation.</p>
+							</div>
+						@endif
+
             <h3>Présentation</h3>
 						<p class="caption">{{ $s->description }}</p>
 						@foreach ($s->keywords()->get()->all() as $keyword)
@@ -35,6 +44,7 @@
         </div>
       </div>
     </div>
+		@if($infos)
     <div id="infos" class="section section scrollspy">
       <div class="container">
         <div class="row">
@@ -94,6 +104,8 @@
         </div>
       </div>
     </div>
+		@endif
+		@if ($network)
     <div id="network" class="section section-grey scrollspy">
       <div class="container">
         <div class="row">
@@ -118,6 +130,7 @@
         </div>
       </div>
     </div>
+		@endif
     <div id="suggest" class="section section scrollspy">
       <div class="container">
         <div class="row">
@@ -133,8 +146,8 @@
       <div class="hide-on-med-and-down">
         <ul class="section table-of-contents">
           <li><a href="#presentation">Présentation</a></li>
-          <li><a href="#infos">Informations</a></li>
-          <li><a href="#network">Réseau</a></li>
+          @if ($infos) <li><a href="#infos">Informations</a></li> @endif
+          @if ($network) <li><a href="#network">Réseau</a></li> @endif
           <li><a href="#suggest">Corriger</a></li>
         </ul>
       </div>

@@ -8,6 +8,9 @@ use App\Field;
 use App\Department;
 use App\LegalStatus;
 use Validator;
+use Schema;
+use App\Suggestion;
+use App\SuggestionValue;
 
 class StartupController extends Controller
 {
@@ -19,7 +22,11 @@ class StartupController extends Controller
    */
   public function show(Request $request, Startup $startup)
   {
-    return view('startups.show', ['s' => $startup]);
+    return view('startups.show', [
+      's' => $startup,
+      'infos' => $startup->field || $startup->twitter || $startup->facebook || $startup->linkedin || $startup->url,
+      'network' => count($startup->individuals()->get()->all()) > 0,
+    ]);
   }
 
   /**
@@ -50,7 +57,34 @@ class StartupController extends Controller
    */
   public function update(Request $request, Startup $startup)
   {
-    $validator = Validator::make($request->all(), Startup::$rules)->validate();
+    $rules = [
+      'editor_email' => 'required|email'
+    ];
+    $validator = Validator::make($request->all(), array_merge($rules, Startup::$rules))->validate();
 
+    try {
+      $s = new Suggestion();
+      $s->email = $request->input('editor_email');
+      $s->save();
+
+      $cols = Schema::getColumnListing($startup->getTable());
+      $cols = array_diff($cols, ['id', 'slug', 'created_at', 'updated_at']);
+
+      foreach($cols as $col)
+      {
+        if($request->input($col)) {
+          $v = new SuggestionValue();
+          $v->table = 'startups';
+          $v->row = $startup->id;
+          $v->column = $col;
+          $v->new_value = $request->input($col);
+          $s->values()->save($v);
+        }
+      }
+    } catch (\Exception $e) {
+      return redirect()->back()->withErrors(['Une erreur interne est survenue, veuillez réessayer plus tard.'])->withInput();
+    }
+
+    return redirect()->route('startups.show', ['startup' => $startup])->with('status', true);
   }
 }
