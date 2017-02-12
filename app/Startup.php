@@ -47,7 +47,8 @@ class Startup extends Model
    */
   public static $rules = [
       'name_official' => 'required|string',
-      'sylvain' => 'required'
+      'sylvain' => 'required',
+      'test' => 'required'
   ];
 
   /**

@@ -27,15 +27,17 @@
 		<div class="section section-grey">
 			<div class="container">
 				<p class="flow-text">Remplir les champs connus puis soumettre ces informations en bas de la page.</p>
+
 				@if (count($errors) > 0)
-					<div class="alert alert-danger">
-						<ul>
-							@foreach ($errors->all() as $error)
-								<li>{{ $error }}</li>
-							@endforeach
-						</ul>
-					</div>
+				<div class="card-alert error">
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
 				@endif
+
 			</div>
 		</div>
 
