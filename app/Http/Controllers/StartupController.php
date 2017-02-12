@@ -9,6 +9,7 @@ use App\Department;
 use App\LegalStatus;
 use Validator;
 use Schema;
+use Mail;
 use App\Suggestion;
 use App\SuggestionValue;
 
@@ -83,6 +84,12 @@ class StartupController extends Controller
       }
     } catch (\Exception $e) {
       return redirect()->back()->withErrors(['Une erreur interne est survenue, veuillez réessayer plus tard.'])->withInput();
+    }
+
+    try {
+      $mail = new \App\Mail\Suggestion($request->input('editor_email'), $s);
+      Mail::to(env('MAIL_USERNAME'))->send($mail);
+    } catch(\Exception $e) {
     }
 
     return redirect()->route('startups.show', ['startup' => $startup])->with('status', true);
