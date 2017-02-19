@@ -33,7 +33,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('resources/**/*', ['front']);
+  gulp.watch('resources/**/*', ['default']);
 });
 
 gulp.task('assets', function() {
@@ -65,10 +65,11 @@ gulp.task('app', function() {
 		src + '/app/vendor/underscore.min.js',
     src + '/app/vendor/angular.min.js',
     src + '/app/vendor/angular-resource.min.js',
-    src + '/app/vendor/angular-route.min.js',
-    src + '/app/vendor/ui-bootstrap-2.2.0.min.js',
-		src + '/app/vendor/arrive.min.js',
-		src + '/app/vendor/nouislider.min.js',
+		src + '/app/vendor/angular-materialize.min.js',
+    //src + '/app/vendor/angular-route.min.js',
+    //src + '/app/vendor/ui-bootstrap-2.2.0.min.js',
+		//src + '/app/vendor/arrive.min.js',
+		//src + '/app/vendor/nouislider.min.js',
   ];
   gulp.src(angular)
   .pipe(concat('vendor.js'))

@@ -1,55 +1,14 @@
-<div class="panel list-group">
-  <div  style="display: block; cursor: pointer" class="list-group-item search-item"
-        data-toggle="collapse" ng-attr-data-target="#preview-{{ startup.id }}" data-parent="#list"
-        ng-repeat="startup in startups">
-    <div class="row vertical-align">
-      <div class="col-xs-3 col-sm-2 center-block text-center">
-        <img src="assets/img/company.png" width="80" class="img-circle img-responsive">
-      </div>
-      <div class="col-xs-9 col-sm-10">
-        <h3 class="list-group-item-heading">{{ startup.name_official }}</h3>
-        <p class="list-group-item-text">{{ startup.description | limitTo: 200 }}{{startup.description.length > 200 ? '...' : ''}}</p>
+<ul class="collapsible" data-collapsible="accordion" watch>
+  <li ng-repeat="startup in startups">
+    <div class="collapsible-header">
+      <div class="collapsible-header-logo"><i class="material-icons">business</i></div>
+      <div class="collapsible-header-content">
+        <h5>{{ startup.name_official }} <span class="light">({{ startup.department.name }})</span></h5>
       </div>
     </div>
-    <div ng-attr-id="preview-{{ startup.id }}" class="row collapse">
-      <div class="col-xs-12">
-        <div class="row text-center hidden-xs">
-          <div class="space-10"></div>
-          <div ng-show="startup.department.name" class="col-xs-12 col-sm-4">
-            <div class="info info-horizontal">
-              <div class="description">
-                <h4 class="info-title"><i class="fa fa-flask" aria-hidden="true"></i> Domaine</h4>
-                <p>{{ startup.department.name }}</p>
-              </div>
-            </div>
-          </div>
-          <div ng-show="startup.foundation_date" class="col-xs-12 col-sm-4">
-            <div class="info info-horizontal">
-              <div class="description">
-                <h4 class="info-title"><i class="fa fa-calendar" aria-hidden="true"></i> Date de fondation</h4>
-                <p>{{ startup.foundation_date | date: 'yyyy' }}</p>
-              </div>
-            </div>
-          </div>
-          <div ng-show="startup.keywords.length" class="col-xs-12 col-sm-4">
-            <div class="info info-horizontal">
-              <div class="description">
-                <h4 class="info-title"><i class="fa fa-tag" aria-hidden="true"></i> Mots clés</h4>
-                <h4>
-                  <span ng-repeat="keyword in startup.keywords"
-                        class="label label-default label-big">{{ keyword.name }}</span>
-                </h4>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="space-10"></div>
-        <div class="row text-center">
-          <div class="col-xs-12">
-            <p><a ng-href="#/startup/{{ startup.id }}" class="btn btn-primary btn-round">Plus de détails</a></p>
-          </div>
-        </div>
-      </div>
+    <div class="collapsible-body">
+      <p>{{ startup.description | limitTo: 200 }}{{ startup.description.length > 200 ? '&hellip;' : '' }}</p>
+      <p class="center"><a class="btn btn-small waves-effect waves-light">En savoir plus</a></p>
     </div>
-  </div>
-</div>
+  </li>
+</ul>

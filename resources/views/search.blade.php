@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="startuputc-search">
 <head>
 	@include("shared.head")
 </head>
-<body>
+<body ng-controller="SearchCtrl">
   <header>
     @include("shared.nav")
     <section class="header-search bordered">
@@ -12,11 +12,11 @@
         <form class="row">
           <div class="col s12 card-search hoverable">
             <div class="input-field search">
-              <input id="search" type="text">
+              <input id="search" type="text" ng-model="q" class="autocomplete">
               <label for="search">Nom de l'entreprise, mots-clés, ...</label>
             </div>
             <div class="button">
-              <a class="btn-floating btn waves-effect waves-light"><i class="material-icons">search</i></a>
+              <a ng-click="search()" class="btn-floating btn waves-effect waves-light"><i class="material-icons">search</i></a>
             </div>
           </div>
         </form>
@@ -69,41 +69,9 @@
 
           </div>
           <div class="col s12 m8 l9">
-            <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <div class="collapsible-header">
-                  <div class="collapsible-header-logo"><i class="material-icons">business</i></div>
-                  <div class="collapsible-header-content">
-                    <h5>Smeal <span class="light">(GB)</span></h5>
-                  </div>
-                </div>
-                <div class="collapsible-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco...</p>
-                  <p class="center"><a class="btn btn-small waves-effect waves-light">En savoir plus</a></p>
-                </div>
-              </li>
-              <li>
-                <div class="collapsible-header">
-                  <div class="collapsible-header-logo"><i class="material-icons">business</i></div>
-                  <div class="collapsible-header-content">
-                    <h5>Equisense <span class="light">(GI)</span></h5>
-                  </div>
-                </div>
-                <div class="collapsible-body">
-                  <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                </div>
-              </li><li>
-                <div class="collapsible-header">
-                  <div class="collapsible-header-logo"><i class="material-icons">business</i></div>
-                  <div class="collapsible-header-content">
-                    <h5>Sensorwake <span class="light">(GI)</span></h5>
-                  </div>
-                </div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-              </li>
-            </ul>
+
+						<search-results data="results"></search-results>
+						
           </div>
         </div>
       </div>
@@ -111,5 +79,8 @@
   </main>
   @include("shared.footer")
 	@include("shared.scripts")
+	<script type="text/javascript" src="{{ asset('app/vendor/vendor.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('app/env.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('app/app.js') }}"></script>
 </body>
 </html>
