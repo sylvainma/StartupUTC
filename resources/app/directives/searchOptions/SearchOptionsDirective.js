@@ -1,4 +1,4 @@
-app.directive('searchOptions', function(ErrorHandler, Fields, Departments) {
+app.directive('searchOptions', function(Fields, Departments) {
   return {
     restrict: 'EA',
     transclude: true,
@@ -16,7 +16,7 @@ app.directive('searchOptions', function(ErrorHandler, Fields, Departments) {
       Departments.get({}, function(res){
         $scope.depts = res.data;
       }, function(error){
-        ErrorHandler.alert(error);
+        //ErrorHandler.alert(error);
       });
 
       $scope.deptsChecked = [];
@@ -30,7 +30,7 @@ app.directive('searchOptions', function(ErrorHandler, Fields, Departments) {
       Fields.get({}, function(res){
         $scope.fields = res.data;
       }, function(error){
-        ErrorHandler.alert(error);
+        //ErrorHandler.alert(error);
       });
 
       $scope.fieldsChecked = [];

@@ -12,7 +12,7 @@
         <form class="row">
           <div class="col s12 card-search hoverable">
             <div class="input-field search">
-              <input id="search" type="text" ng-model="q" class="autocomplete">
+              <input ng-keypress="($event.charCode==13)? search() : return" id="search" type="text" ng-model="q" class="autocomplete">
               <label for="search">Nom de l'entreprise, mots-clés, ...</label>
             </div>
             <div class="button">
@@ -30,48 +30,11 @@
         <div class="row">
           <div class="col s12 m4 l3">
 
-            <div class="card">
-              <div class="card-content">
-                <span class="card-title">Domaine</span>
-                <p>
-                  <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-                  <label for="filled-in-box">Tous</label>
-                </p>
-                <p>
-                  <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-                  <label for="filled-in-box">Génie informatique</label>
-                </p>
-                <p>
-                  <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-                  <label for="filled-in-box">Génie biologique</label>
-                </p>
-                <p>
-                  <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-                  <label for="filled-in-box">Génie des procédés</label>
-                </p>
-                <p>
-                  <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-                  <label for="filled-in-box">Génie des systèmes urbains</label>
-                </p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-content">
-                <span class="card-title">Date de création</span>
-                <form action="#">
-                  <p class="range-field">
-                    <input type="range" id="test5" min="0" max="100" />
-                  </p>
-                </form>
-                </div>
-            </div>
+						<search-options depts="deptsChecked" fields="fieldsChecked" foundation="foundation" callback="update()"></search-options>
 
           </div>
           <div class="col s12 m8 l9">
-
 						<search-results data="results"></search-results>
-						
           </div>
         </div>
       </div>
